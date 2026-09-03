@@ -9,7 +9,15 @@ import kagglehub
 import pandas as pd
 
 # local
-from watson_dataset_config import COMPETITION, DATA_DIR, FILES, PROJECT_ROOT
+from watson_dataset_config import (
+    COMPETITION,
+    DATA_DIR,
+    FILES,
+    PROJECT_ROOT,
+    SUBMISSION_COLUMNS,
+    TEST_COLUMNS,
+    TRAIN_COLUMNS,
+)
 
 
 def ensure_dataset_downloaded() -> None:
@@ -43,13 +51,19 @@ def _normalize_downloaded_files() -> None:
 
 def load_datasets() -> dict[str, pd.DataFrame]:
     """Download, validate, and return fresh competition DataFrames."""
-    ensure_dataset_downloaded()
+
+    try:
+        ensure_dataset_downloaded()
+    except Exception as e:
+        raise RuntimeError("Failed to download and normalize the dataset.") from e
+
     missing_files = [path for path in FILES.values() if not path.is_file()]
     if missing_files:
         missing = ", ".join(str(path) for path in missing_files)
         raise FileNotFoundError(f"Expected Kaggle files were not found: {missing}")
 
-    return {name: pd.read_csv(path) for name, path in FILES.items()}
+    competition_dfs = {name: pd.read_csv(path) for name, path in FILES.items()}
+    return competition_dfs
 
 
 def build_dataset_overview(
@@ -74,9 +88,25 @@ def validate_columns(data: pd.DataFrame, expected: set[str], name: str) -> None:
     """Raise a clear error when a dataset's columns differ from expectations."""
     actual = set(data.columns)
     if actual != expected:
+        # which columns were expected but not found in the actual dataset
         missing = sorted(expected - actual)
+
+        # which columns were found in the actual dataset but not expected
         unexpected = sorted(actual - expected)
+
+        msg1 = "columns were expected but not found"
+        msg2 = "columns were found but not expected"
         raise ValueError(
-            f"Unexpected {name} schema; missing={missing}, unexpected={unexpected}"
+            f"Unexpected {name} schema; {msg1}: {missing}; {msg2}: {unexpected}"
         )
 
+
+def validate_dataset_columns(datasets: Mapping[str, pd.DataFrame]) -> None:
+    """Validate the schemas of all competition datasets."""
+    validate_columns(datasets["train"], TRAIN_COLUMNS, "training data")
+    validate_columns(datasets["test"], TEST_COLUMNS, "test data")
+    validate_columns(
+        datasets["sample_submission"],
+        SUBMISSION_COLUMNS,
+        "sample submission",
+    )

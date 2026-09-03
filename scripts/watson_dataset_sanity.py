@@ -5,29 +5,22 @@
 # third-party
 
 # local
-from watson_dataset_config import (
-    LABEL_NAMES,
-    SUBMISSION_COLUMNS,
-    TEST_COLUMNS,
-    TRAIN_COLUMNS,
-)
+from watson_dataset_config import LABEL_NAMES
 from watson_dataset_helpers import (
     build_dataset_overview,
     load_datasets,
-    validate_columns,
+    validate_dataset_columns,
 )
 
 
 def main() -> None:
     """Validate files and print a compact dataset profile."""
     datasets = load_datasets()
+    validate_dataset_columns(datasets)
+
     train = datasets["train"]
     test = datasets["test"]
     submission = datasets["sample_submission"]
-
-    validate_columns(train, TRAIN_COLUMNS, "training data")
-    validate_columns(test, TEST_COLUMNS, "test data")
-    validate_columns(submission, SUBMISSION_COLUMNS, "sample submission")
 
     labels = set(train["label"].unique())
     if labels != set(LABEL_NAMES):
@@ -50,4 +43,3 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
-

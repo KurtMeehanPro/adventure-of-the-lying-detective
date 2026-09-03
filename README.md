@@ -36,10 +36,10 @@ Run:
 python scripts/watson_dataset_sanity.py
 ```
 
-The script downloads missing competition files through KaggleHub into
-`data/raw`, verifies the expected train, test, and sample-submission schemas,
-and reports dataset sizes, languages, label counts, missing values, and
-duplicate IDs.
+The script:
+- downloads missing competition files through KaggleHub into `data/raw`
+- verifies the expected train, test, and sample-submission schemas,
+- reports dataset sizes, languages, label counts, missing values, and duplicate IDs.
 
 ## Planned workflow
 
