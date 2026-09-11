@@ -23,8 +23,10 @@ def load_model_and_tokenizer():
     """Load XLM-RoBERTa base with a three-label head and its matching tokenizer."""
     model_name = "FacebookAI/xlm-roberta-base"
     try:
-        tokenizer = AutoTokenizer.from_pretrained(model_name)
-        model = AutoModelForSequenceClassification.from_pretrained(model_name, num_labels=3)
+        tokenizer = AutoTokenizer.from_pretrained(
+            model_name, clean_up_tokenization_spaces=False)
+        model = AutoModelForSequenceClassification.from_pretrained(
+            model_name, num_labels=3)
     except OSError as error:
         raise RuntimeError(f"Failed to load the model or tokenizer for {model_name}.") from error
     return model, tokenizer
