@@ -1,5 +1,6 @@
 """Load the Watson competition datasets using the existing dataset helper."""
 # standard library
+from datetime import datetime
 
 # third-party
 import torch
@@ -88,7 +89,11 @@ def fine_tune(model, training_loader, learning_rate, epochs):
 
         for batch_idx, batch in enumerate(training_loader):
             if batch_idx % 100 == 0:
-                print(f"Processing batch {batch_idx}/{len(training_loader)}")
+                print(
+                    f"{datetime.now():%Y-%m-%d %H:%M:%S} | "
+                    f"Processing batch {batch_idx}/{len(training_loader)}",
+                    flush=True,
+                )
 
             ## Move the batch to the same device as the model
             batch = {key: value.to(device) for key, value in batch.items()}
