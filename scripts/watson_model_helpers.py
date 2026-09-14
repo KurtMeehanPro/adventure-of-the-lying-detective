@@ -74,12 +74,12 @@ def make_loaders(training_encodings, validation_encodings, tokenizer, batch_size
 
 def fine_tune(model, training_loader, learning_rate, epochs):
     """Update the model in place and print average training loss each epoch."""
-    # device = torch.device(
-    #     "cuda" if torch.cuda.is_available()
-    #     else "mps" if torch.backends.mps.is_available()
-    #     else "cpu"
-    # )
-    device = torch.device("cpu")
+    device = torch.device(
+        "cuda" if torch.cuda.is_available()
+        else "mps" if torch.backends.mps.is_available()
+        else "cpu"
+    )
+    # device = torch.device("cpu")
     model.to(device)
     optimizer = torch.optim.AdamW(model.parameters(), lr=learning_rate)
     for epoch in range(epochs):
@@ -88,6 +88,7 @@ def fine_tune(model, training_loader, learning_rate, epochs):
         total_examples = 0
 
         for batch_idx, batch in enumerate(training_loader):
+            print(f"{datetime.now():%Y-%m-%d %H:%M:%S} | Processing batch {batch_idx}/{len(training_loader)}", flush=True)
             if batch_idx % 100 == 0:
                 print(
                     f"{datetime.now():%Y-%m-%d %H:%M:%S} | "
@@ -106,4 +107,4 @@ def fine_tune(model, training_loader, learning_rate, epochs):
             total_loss += loss.item() * batch_size
             total_examples += batch_size
         print(f"Epoch {epoch + 1}/{epochs}: training loss = {total_loss / total_examples:.4f}")
-        torch.mps.empty_cache()
+        # torch.mps.empty_cache()

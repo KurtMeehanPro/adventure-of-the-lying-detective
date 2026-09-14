@@ -7,6 +7,7 @@ from pathlib import Path
 # third-party
 import kagglehub
 import pandas as pd
+from kagglehub.exceptions import UnauthenticatedError
 
 # local
 from watson_dataset_config import (
@@ -54,7 +55,20 @@ def load_datasets() -> dict[str, pd.DataFrame]:
 
     try:
         ensure_dataset_downloaded()
+    except UnauthenticatedError as e:
+        err_msg = f"\nError: {e}"
+        instructions_msg =  "\nKaggleHub failed to authenticate."
+        instructions_msg += "\nPlease ensure you have a valid Kaggle API token."
+        instructions_msg += "\nObtain a Kaggle API token from your Kaggle account settings."
+        instructions_msg += "\nPlace token in default location: ~/.kaggle/kaggle.json"
+        instructions_msg += "\nFor more info, see: https://www.kaggle.com/docs/api"
+        print(f"{err_msg}\n{instructions_msg}")
+
+        exception_msg = "\nFailed to authenticate with Kaggle."
+        raise UnauthenticatedError(exception_msg) from e
     except Exception as e:
+        err_msg = "An error occurred while downloading or normalizing the dataset."
+        print(f"{err_msg} - {e}")
         raise RuntimeError("Failed to download and normalize the dataset.") from e
 
     missing_files = [path for path in FILES.values() if not path.is_file()]
