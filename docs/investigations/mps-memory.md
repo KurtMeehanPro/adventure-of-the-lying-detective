@@ -4,7 +4,7 @@
 
 ## Configuration and observed failure
 
-The investigation used a reported Apple M5 MacBook Air with 16 GB unified memory, macOS 26.6.2, native arm64 Python 3.12.10, PyTorch 2.2.2 and Transformers 4.44.2. The workload was full FP32 fine-tuning of `FacebookAI/xlm-roberta-base` with a three-label classification head, stock AdamW (`lr=2e-5`), batch size 1, and dynamic padding of tokenized premise–hypothesis pairs. MPS execution was verified with actual GPU operations; no separate acceleration plugin was missing.
+The investigation used an Apple M5 MacBook Air with 16 GB unified memory, macOS 26.6.2, native arm64 Python 3.12.10, PyTorch 2.2.2 and Transformers 4.44.2. The workload was full FP32 fine-tuning of `FacebookAI/xlm-roberta-base` with a three-label classification head, stock AdamW (`lr=2e-5`), batch size 1, and dynamic padding of tokenized premise–hypothesis pairs. MPS execution was verified with actual GPU operations; no separate acceleration plugin was missing.
 
 Two fresh notebook runs reached the last printed batch index **23** approximately 14 seconds after index 0. Logging occurs **before** batch computation: this indicates that batches 0–22 completed and the 24th batch began, not that 24 updates completed. Earlier logging only every 100 batches had obscured this progression; the failure was not established to occur on the first update.
 

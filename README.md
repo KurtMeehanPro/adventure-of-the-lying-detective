@@ -18,12 +18,35 @@ evaluated using classification accuracy.
 
 ## Setup
 
-Python 3.12 is used for local development. Create and activate a virtual
-environment, then install the dependencies:
+Choose one requirements file per separate virtual environment. Install the
+specified Python version first, then create and activate the environment with
+that interpreter; pip installs the packages, not Python itself.
+
+### Recommended: Apple silicon
+
+Use **Python 3.14.7** with [requirements.txt](requirements.txt):
 
 ```bash
 python -m pip install -r requirements.txt
 ```
+
+This setup was validated on an Apple silicon MacBook Air with PyTorch 2.14.0.
+XLM-R completed a full training epoch with batch size 4 and dynamic padding,
+with training loss 1.1052. Other platforms have not been validated.
+
+### Intel Mac compatibility
+
+Use **Python 3.12** with
+[requirements-macos-intel.txt](requirements-macos-intel.txt):
+
+```bash
+python -m pip install -r requirements-macos-intel.txt
+```
+
+This preserves the previous dependency pins, including PyTorch 2.2.2, whose
+official packages support Intel Macs. A CPU baseline exists. MPS training with
+the current dynamic padding has not been validated on the Intel iMac; the
+fixed-padding workaround was demonstrated on the MacBook Air only.
 
 Authenticate with Kaggle and accept the competition rules before downloading
 the data.
@@ -49,4 +72,3 @@ The script:
    across folds.
 4. Analyze performance by language and class.
 5. Train the selected model and generate a validated Kaggle submission.
-

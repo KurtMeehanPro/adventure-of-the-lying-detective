@@ -60,7 +60,11 @@ class EncodedDataset(Dataset):
 
 def make_loaders(training_encodings, validation_encodings, tokenizer, batch_size):
     """Pad each batch to its longest example and return PyTorch tensors."""
-    collator = DataCollatorWithPadding(tokenizer=tokenizer, return_tensors="pt")
+    # collator = DataCollatorWithPadding(tokenizer=tokenizer,
+    #                                    return_tensors="pt",
+    #                                    padding="max_length")
+    collator = DataCollatorWithPadding(tokenizer=tokenizer,
+                                       return_tensors="pt")
     training_loader = DataLoader(
         EncodedDataset(training_encodings), batch_size=batch_size,
         shuffle=True, collate_fn=collator,
@@ -88,7 +92,7 @@ def fine_tune(model, training_loader, learning_rate, epochs):
         total_examples = 0
 
         for batch_idx, batch in enumerate(training_loader):
-            print(f"{datetime.now():%Y-%m-%d %H:%M:%S} | Processing batch {batch_idx}/{len(training_loader)}", flush=True)
+            # print(f"{datetime.now():%Y-%m-%d %H:%M:%S} | Processing batch {batch_idx}/{len(training_loader)}", flush=True)
             if batch_idx % 100 == 0:
                 print(
                     f"{datetime.now():%Y-%m-%d %H:%M:%S} | "
