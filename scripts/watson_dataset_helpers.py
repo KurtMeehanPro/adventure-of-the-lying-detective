@@ -60,7 +60,7 @@ def load_datasets() -> dict[str, pd.DataFrame]:
         instructions_msg =  "\nKaggleHub failed to authenticate."
         instructions_msg += "\nPlease ensure you have a valid Kaggle API token."
         instructions_msg += "\nObtain a Kaggle API token from your Kaggle account settings."
-        instructions_msg += "\nPlace token in default location: ~/.kaggle/kaggle.json"
+        instructions_msg += "\nPlace token in default location: ~/.kaggle/access_token"
         instructions_msg += "\nFor more info, see: https://www.kaggle.com/docs/api"
         print(f"{err_msg}\n{instructions_msg}")
 
