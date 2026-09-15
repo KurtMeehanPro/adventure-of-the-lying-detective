@@ -15,6 +15,7 @@ evaluated using classification accuracy.
 - `notebooks/` contains numbered exploration, modeling, and submission
   notebooks.
 - `scripts/` contains reusable dataset configuration and validation code.
+- `docs/` contains investigation and runtime performance documentation.
 
 ## Setup
 
@@ -32,7 +33,7 @@ python -m pip install -r requirements.txt
 
 This setup was validated on an Apple silicon MacBook Air with PyTorch 2.14.0.
 XLM-R completed a full training epoch with batch size 4 and dynamic padding,
-with training loss 1.1052. Other platforms have not been validated.
+with training loss 1.1052.
 
 ### Intel Mac compatibility
 
@@ -47,6 +48,8 @@ This preserves the previous dependency pins, including PyTorch 2.2.2, whose
 official packages support Intel Macs. A CPU baseline exists. MPS training with
 the current dynamic padding has not been validated on the Intel iMac; the
 fixed-padding workaround was demonstrated on the MacBook Air only.
+
+### Kaggle authentication
 
 Authenticate with Kaggle and accept the competition rules before downloading
 the data.
@@ -63,12 +66,3 @@ The script:
 - downloads missing competition files through KaggleHub into `data/raw`
 - verifies the expected train, test, and sample-submission schemas,
 - reports dataset sizes, languages, label counts, missing values, and duplicate IDs.
-
-## Planned workflow
-
-1. Explore class balance, language coverage, text lengths, and duplicate pairs.
-2. Establish a reproducible multilingual baseline.
-3. Fine-tune and validate a multilingual transformer without leaking examples
-   across folds.
-4. Analyze performance by language and class.
-5. Train the selected model and generate a validated Kaggle submission.

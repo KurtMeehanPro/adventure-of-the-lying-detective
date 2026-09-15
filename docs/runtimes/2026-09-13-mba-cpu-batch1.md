@@ -2,7 +2,7 @@
 
 XLM-R training on MacBook Air CPU, batch size 1.
 
-Measured interval: batch 0 to batch 1000, 19:27:51–19:34:23 = 392 seconds / 1,000 training examples = **0.392 seconds/example**. No complete epoch is shown in the recorded log.
+Measured interval: batch 0 to batch 1000, 19:27:51–19:34:23 = 392 seconds / 1,000 training examples = **0.392 seconds/example**. Partial run, stopped intentionally.
 
 ## Training log
 

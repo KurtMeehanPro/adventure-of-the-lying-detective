@@ -2,7 +2,7 @@
 
 XLM-R training on MacBook Air MPS, batch size 8, `padding='max_length'` with tokenizer default 512; PyTorch 2.2.2, FP32, AdamW. Progress printed every 100 batches.
 
-Measured interval: batch 0 to batch 100, 16:55:38–17:01:59 = 381 seconds / 800 training examples = **0.4763 seconds/example** (unrounded: 0.47625). Partial run; no epoch completion shown.
+Measured interval: batch 0 to batch 100, 16:55:38–17:01:59 = 381 seconds / 800 training examples = **0.4763 seconds/example** (unrounded: 0.47625). Partial run, stopped intentionally.
 
 ## Training log
 
