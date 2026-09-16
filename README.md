@@ -4,6 +4,9 @@ A multilingual natural-language inference project for Kaggle's
 [Contradictory, My Dear Watson](https://www.kaggle.com/competitions/contradictory-my-dear-watson)
 competition.
 
+excerpt from the Kaggle challenge:
+> “If you have two sentences, there are three ways they could be related: one could entail the other, one could contradict the other, or they could be unrelated. Natural Language Inferencing (NLI) is a popular NLP problem that involves determining how pairs of sentences (consisting of a premise and a hypothesis) are related.”
+
 The task is to classify the relationship between a premise and a hypothesis as
 entailment, neutral, or contradiction across 15 languages. Submissions are
 evaluated using classification accuracy.
