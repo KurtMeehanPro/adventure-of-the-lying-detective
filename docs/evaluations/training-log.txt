@@ -1,0 +1,170 @@
+restarting the kernel each run
+
+learning_rate = 2e-5
+###
+2026-09-16 15:43:12 | Epoch 1/5: training loss = 1.1045, validation loss = 1.1007, validation accuracy = 34.46%
+2026-09-16 15:54:38 | Epoch 2/5: training loss = 1.1025, validation loss = 1.0997, validation accuracy = 34.46%
+2026-09-16 16:06:48 | Epoch 3/5: training loss = 1.1032, validation loss = 1.0984, validation accuracy = 34.46%
+2026-09-16 16:17:00 | Epoch 4/5: training loss = 1.1037, validation loss = 1.0985, validation accuracy = 34.46%
+2026-09-16 16:26:21 | Epoch 5/5: training loss = 1.1024, validation loss = 1.0982, validation accuracy = 34.46%
+
+learning_rate = 2e-4
+###
+2026-09-16 16:39:42 | Epoch 1/2: training loss = 1.1231, validation loss = 1.1037, validation accuracy = 33.51%
+2026-09-16 16:49:15 | Epoch 2/2: training loss = 1.1085, validation loss = 1.0988, validation accuracy = 33.51%
+
+learning_rate = 2e-3
+###
+2026-09-16 17:01:34 | Epoch 1/2: training loss = 1.1418, validation loss = 1.1031, validation accuracy = 34.46%
+2026-09-16 17:11:11 | Epoch 2/2: training loss = 1.1081, validation loss = 1.0988, validation accuracy = 34.46%
+
+learning_rate = 2e-1
+###
+2026-09-16 18:27:54 | Epoch 1/3: training loss = 39.8902, validation loss = 52.8499, validation accuracy = 32.03%
+2026-09-16 18:38:09 | Epoch 2/3: training loss = 39.9662, validation loss = 34.5358, validation accuracy = 34.46%
+
+learning_rate = 2e-2
+###
+2026-09-16 19:25:19 | Epoch 1/3: training loss = 4.2644, validation loss = 2.7382, validation accuracy = 34.46%
+2026-09-16 19:35:02 | Epoch 2/3: training loss = 4.5402, validation loss = 1.3838, validation accuracy = 32.03%
+
+learning_rate = 2e-5, gemini_fine_tune used
+###
+2026-09-16 20:22:06 | Epoch 1/3: training loss = 1.1057, validation loss = 1.0999, validation accuracy = 33.51%
+2026-09-16 20:43:29 | Epoch 2/3: training loss = 1.1038, validation loss = 1.0982, validation accuracy = 34.46%
+2026-09-16 21:04:56 | Epoch 3/3: training loss = 1.0999, validation loss = 1.0982, validation accuracy = 34.46%
+
+>>> learning_rate = 1e-5, epochs = 2,
+###
+2026-09-18 19:14:49 | Epoch 1/2: training loss = 1.0914, validation loss = 1.0114, validation accuracy = 48.15%
+2026-09-18 19:28:09 | Epoch 2/2: training loss = 0.9118, validation loss = 0.7614, validation accuracy = 67.81%
+
+strategy
+###
+- **`5e-6` = `0.000005`** — 50% below successful rate, 1e-5
+- **`1e-5` = `0.000010`** — successful rate, 1e-5
+- **`1.5e-5` = `0.000015`** — 50% above 1e-5, halfway to `2e-5` (`0.000020`).
+
+learning_rate = 1.5e-5, epochs = 2
+###
+2026-09-18 20:06:43 | Epoch 1/2: training loss = 1.1022, validation loss = 1.0985, validation accuracy = 34.46%
+2026-09-18 20:22:03 | Epoch 2/2: training loss = 1.0608, validation loss = 0.9758, validation accuracy = 53.42%
+
+learning_rate = 5e-6, epochs = 2
+###
+2026-09-18 20:26:54 | Training on mps with 2424 batches per epoch for 2 epochs. with learning rate 5e-06.
+2026-09-18 20:43:10 | Epoch 1/2: training loss = 1.0806, validation loss = 0.9914, validation accuracy = 55.23%
+2026-09-18 20:57:35 | Epoch 2/2: training loss = 0.8562, validation loss = 0.7395, validation accuracy = 68.96%
+2026-09-18 20:57:35 | Training complete. Final validation accuracy = 68.96%
+
+###
+2026-09-18 21:02:09 | Training on mps, 2424 batches/epoch, 2 epochs, learning rate 2.5e-06.
+2026-09-18 21:12:31 | Epoch 1/2: training loss = 1.0957, validation loss = 1.0667, validation accuracy = 48.43%
+2026-09-18 21:24:30 | Epoch 2/2: training loss = 0.9307, validation loss = 0.7954, validation accuracy = 64.96%
+2026-09-18 21:24:30 | Training complete. Final validation accuracy = 64.96%
+
+###
+2026-09-18 21:28:02 | Training on mps, 2424 batches/epoch, 2 epochs, learning rate 7.5e-06
+2026-09-18 21:43:00 | Epoch 1/2: training loss = 1.0141, validation loss = 0.7556, validation accuracy = 67.77%
+2026-09-18 21:56:20 | Epoch 2/2: training loss = 0.7455, validation loss = 0.6897, validation accuracy = 71.68%
+2026-09-18 21:56:20 | Training complete. Final validation accuracy = 71.68%
+
+###
+2026-09-18 22:04:41 | Training on mps, 2424 batches/epoch, 2 epochs, learning rate 7.5e-06
+2026-09-18 22:17:25 | Epoch 1/2: training loss = 1.0667, validation loss = 0.8953, validation accuracy = 57.71%
+2026-09-18 22:27:17 | Epoch 2/2: training loss = 0.8481, validation loss = 0.7653, validation accuracy = 67.31%
+2026-09-18 22:27:17 | Training complete. Final validation accuracy = 67.31%
+
+###
+2026-09-18 22:29:35 | Training on mps, 2424 batches/epoch, 2 epochs, learning rate 6.25e-06
+2026-09-18 22:38:56 | Epoch 1/2: training loss = 1.0653, validation loss = 0.8925, validation accuracy = 60.35%
+2026-09-18 22:48:24 | Epoch 2/2: training loss = 0.8052, validation loss = 0.6719, validation accuracy = 71.10%
+2026-09-18 22:48:24 | Training complete. Final validation accuracy = 71.10%
+
+###
+2026-09-18 22:52:45 | Training on mps, 2424 batches/epoch, 2 epochs, learning rate 6.875e-06
+2026-09-18 23:02:27 | Epoch 1/2: training loss = 1.0942, validation loss = 1.0375, validation accuracy = 46.00%
+2026-09-18 23:11:55 | Epoch 2/2: training loss = 0.9282, validation loss = 0.7238, validation accuracy = 69.33%
+2026-09-18 23:11:55 | Training complete. Final validation accuracy = 69.33%
+
+
+###
+2026-09-18 23:19:14 | Training on mps, 2424 batches/epoch, 2 epochs, learning rate 6.25e-06
+2026-09-18 23:28:40 | Epoch 1/2: training loss = 1.1018, validation loss = 1.0962, validation accuracy = 36.97%
+2026-09-18 23:38:05 | Epoch 2/2: training loss = 0.9866, validation loss = 0.8175, validation accuracy = 63.77%
+2026-09-18 23:38:05 | Training complete. Final validation accuracy = 63.77%
+
+
+linear warmup introduced
+###
+2026-09-18 23:45:05 | Training on mps, 2424 batches/epoch, 2 epochs, learning rate 7.5e-06
+2026-09-18 23:54:36 | Epoch 1/2: training loss = 1.0343, validation loss = 0.9166, validation accuracy = 60.63%
+2026-09-19 00:04:06 | Epoch 2/2: training loss = 0.8221, validation loss = 0.7314, validation accuracy = 69.29%
+2026-09-19 00:04:06 | Training complete. Final validation accuracy = 69.29%
+
+###
+2026-09-19 00:07:34 | Training on mps, 2424 batches/epoch, 2 epochs, learning rate 7.5e-06
+2026-09-19 00:17:15 | Epoch 1/2: training loss = 1.0746, validation loss = 0.9107, validation accuracy = 59.69%
+2026-09-19 00:26:38 | Epoch 2/2: training loss = 0.8196, validation loss = 0.7471, validation accuracy = 68.67%
+2026-09-19 00:26:38 | Training complete. Final validation accuracy = 68.67%
+
+###
+2026-09-19 00:28:27 | Training on mps, 2424 batches/epoch, 2 epochs, learning rate 1e-05
+2026-09-19 00:37:52 | Epoch 1/2: training loss = 1.0709, validation loss = 0.9433, validation accuracy = 52.14%
+2026-09-19 00:47:10 | Epoch 2/2: training loss = 0.8660, validation loss = 0.7474, validation accuracy = 66.78%
+2026-09-19 00:47:10 | Training complete. Final validation accuracy = 66.78%
+
+###
+2026-09-21 15:20:11 | Training on mps, 2424 batches/epoch, 2 epochs, learning rate 1e-05
+2026-09-21 15:29:42 | Epoch 1/2: training loss = 1.0933, validation loss = 1.1267, validation accuracy = 38.46%
+2026-09-21 15:39:08 | Epoch 2/2: training loss = 0.9506, validation loss = 0.7772, validation accuracy = 66.28%
+2026-09-21 15:39:08 | Training complete. Final validation accuracy = 66.28%
+
+###
+2026-09-21 15:43:14 | Training on mps, 2424 batches/epoch, 2 epochs, learning rate 2e-05
+2026-09-21 15:52:41 | Epoch 1/2: training loss = 1.1046, validation loss = 1.0989, validation accuracy = 33.51%
+2026-09-21 16:02:08 | Epoch 2/2: training loss = 1.1049, validation loss = 1.0985, validation accuracy = 33.51%
+2026-09-21 16:02:08 | Training complete. Final validation accuracy = 33.51%
+
+###
+2026-09-21 16:13:56 | Training on mps, 2424 batches/epoch, 5 epochs, learning rate 7.5e-06
+2026-09-21 16:23:19 | Epoch 1/5: training loss = 1.0735, validation loss = 0.9345, validation accuracy = 52.72%
+2026-09-21 16:32:39 | Epoch 2/5: training loss = 0.8709, validation loss = 0.7173, validation accuracy = 69.29%
+2026-09-21 16:42:01 | Epoch 3/5: training loss = 0.6585, validation loss = 0.7064, validation accuracy = 72.26%
+2026-09-21 16:51:22 | Epoch 4/5: training loss = 0.5000, validation loss = 0.7378, validation accuracy = 72.18%
+2026-09-21 17:00:48 | Epoch 5/5: training loss = 0.3626, validation loss = 0.8197, validation accuracy = 72.67%
+2026-09-21 17:00:48 | Training complete. Final validation accuracy = 72.67%
+
+###
+2026-09-21 17:14:06 | Training on mps, 2424 batches/epoch, 5 epochs, learning rate 7.5e-06
+2026-09-21 17:23:26 | Epoch 1/5: training loss = 1.1006, validation loss = 1.0969, validation accuracy = 33.51%
+2026-09-21 17:32:41 | Epoch 2/5: training loss = 0.9996, validation loss = 0.9567, validation accuracy = 54.91%
+2026-09-21 17:41:52 | Epoch 3/5: training loss = 0.7845, validation loss = 0.7444, validation accuracy = 69.66%
+2026-09-21 17:51:05 | Epoch 4/5: training loss = 0.6189, validation loss = 0.7172, validation accuracy = 71.27%
+2026-09-21 18:00:20 | Epoch 5/5: training loss = 0.4683, validation loss = 0.7284, validation accuracy = 71.43%
+2026-09-21 18:00:20 | Training complete. Final validation accuracy = 71.43%
+
+###
+2026-09-21 19:08:32 | Training on mps, 2424 batches/epoch, 5 epochs, learning rate 7.5e-06, training precision BF16 mixed; validation precision FP32
+2026-09-21 19:17:14 | Epoch 1/5: training loss = 1.1000, validation loss = 1.0979, validation accuracy = 33.51%
+2026-09-21 19:25:47 | Epoch 2/5: training loss = 1.1017, validation loss = 1.0990, validation accuracy = 33.51%
+2026-09-21 19:34:18 | Epoch 3/5: training loss = 1.1017, validation loss = 1.0983, validation accuracy = 34.46%
+2026-09-21 19:42:52 | Epoch 4/5: training loss = 1.1021, validation loss = 1.1003, validation accuracy = 34.46%
+
+
+###
+2026-09-21 20:00:42 | Training on mps, 2424 batches/epoch, 5 epochs, learning rate 7.5e-06, weight decay 0.05, training precision FP32; validation precision FP32
+Best checkpoint: /Users/kurtmeehanpro/Documents/code/git/lying-detective/data/checkpoints/xlm-roberta-base/run-20260921-200042-npdt8xzj/best.pt
+Early stopping: patience=2, min_delta=0.0
+2026-09-21 20:10:23 | Epoch 1/5: training loss = 1.0915, validation loss = 1.0191, validation accuracy = 47.20%
+Saved best checkpoint: epoch 1, validation loss=1.0191
+2026-09-21 20:20:00 | Epoch 2/5: training loss = 0.9086, validation loss = 0.7513, validation accuracy = 68.14%
+Saved best checkpoint: epoch 2, validation loss=0.7513
+2026-09-21 20:29:24 | Epoch 3/5: training loss = 0.7016, validation loss = 0.7169, validation accuracy = 69.83%
+Saved best checkpoint: epoch 3, validation loss=0.7169
+2026-09-21 20:39:02 | Epoch 4/5: training loss = 0.5346, validation loss = 0.7592, validation accuracy = 69.95%
+No significant validation-loss improvement: 1 consecutive epoch(s)
+2026-09-21 20:48:49 | Epoch 5/5: training loss = 0.3907, validation loss = 0.8221, validation accuracy = 71.68%
+No significant validation-loss improvement: 2 consecutive epoch(s)
+Early stopping after epoch 5 (patience=2)
+Training complete. Restored best epoch 3: validation loss=0.7169, validation accuracy=69.83%; /Users/kurtmeehanpro/Documents/code/git/lying-detective/data/checkpoints/xlm-roberta-base/run-20260921-200042-npdt8xzj/best.pt
