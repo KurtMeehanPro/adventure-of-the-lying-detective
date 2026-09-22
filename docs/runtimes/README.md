@@ -5,7 +5,7 @@
 While fine-tuning FacebookAI/xlm-roberta-base on the iMac with an Intel chipset using MPS, I encountered an out-of-memory error. This led to an [investigation into MPS memory usage](../investigations/mps-memory.md), which continued on the MacBook Air M5. The same MPS memory issue was found on Mabook Air with PyTorch 2.2.2. During the investigation, I also recorded training runtimes across different hardware and software configurations. The comparisons below document those results.
 
 ## Limitations
-The iMac with Intel is limited to PyTorch 2.2.2 when using official macOS x86_64 binaries, as [support ended with the 2.2 series](https://dev-discuss.pytorch.org/t/pytorch-macos-x86-builds-deprecation-starting-january-2024/1690). 
+The iMac with Intel is limited to PyTorch 2.2.2 when using official macOS x86_64 binaries, as [support ended with the 2.2 series](https://dev-discuss.pytorch.org/t/pytorch-macos-x86-builds-deprecation-starting-january-2024/1690).
 
 ## Findings
 Fixed-length padding and upgrading to newer PyTorch, both, individually, resolved the memory issue on the Macbook Air. It's still untested whether fixed padding resolves the iMac's MPS memory issue. Even if it does fix the issue on iMac, as it did on the Macbook Air, newer official builds for PyTorch are unavailable for the iMac. Hence, we can't get the same kind of speed improvements that were shown in the table below for Macbook Air using newer versions of PyTorch and dynamic padding. The fastest measured configuration was the MacBook Air using newer PyTorch 2.14.0 with batch size 4, dynamic padding, and Python 3.14.7.

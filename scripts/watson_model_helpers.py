@@ -165,7 +165,7 @@ def fine_tune(model, training_loader, validation_loader, learning_rate, epochs,
         f" learning rate {learning_rate}, weight decay {weight_decay},"
         f" training precision {'BF16 mixed' if use_bf16 else 'FP32'};"
         f" validation precision {'BF16 mixed' if validation_use_bf16 else 'FP32'}"
-    )   
+    )
 
     print(f"Best checkpoint: {checkpoint_path}")
     print(f"Early stopping: patience={early_stopping_patience}, min_delta={min_delta}")
