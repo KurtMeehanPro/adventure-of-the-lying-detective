@@ -168,3 +168,89 @@ No significant validation-loss improvement: 1 consecutive epoch(s)
 No significant validation-loss improvement: 2 consecutive epoch(s)
 Early stopping after epoch 5 (patience=2)
 Training complete. Restored best epoch 3: validation loss=0.7169, validation accuracy=69.83%; /Users/kurtmeehanpro/Documents/code/git/lying-detective/data/checkpoints/xlm-roberta-base/run-20260921-200042-npdt8xzj/best.pt
+
+mac studio m5 max 64gb now being used
+###
+
+batch size 8
+###
+2026-09-22 22:00:44 | Training on mps, 1212 batches/epoch, 5 epochs, learning rate 7.5e-06, weight decay 0.01, training precision FP32; validation precision FP32
+Best checkpoint: /Users/KurtMeehanPro/Documents/code/git/adventure-of-the-lying-detective/data/checkpoints/xlm-roberta-base/run-20260922-220044-fbzmsbom/best.pt
+Early stopping: patience=2, min_delta=0.0
+2026-09-22 22:02:44 | Epoch 1/5: training loss = 1.0954, validation loss = 1.0593, validation accuracy = 47.90%
+Saved best checkpoint: epoch 1, validation loss=1.0593
+>>> stopped intentionally
+
+batch size 16
+###
+2026-09-22 22:03:36 | Training on mps, 606 batches/epoch, 5 epochs, learning rate 7.5e-06, weight decay 0.01, training precision FP32; validation precision FP32
+Best checkpoint: /Users/KurtMeehanPro/Documents/code/git/adventure-of-the-lying-detective/data/checkpoints/xlm-roberta-base/run-20260922-220336-qer3gxkw/best.pt
+Early stopping: patience=2, min_delta=0.0
+2026-09-22 22:05:01 | Epoch 1/5: training loss = 1.0990, validation loss = 1.0841, validation accuracy = 41.84%
+Saved best checkpoint: epoch 1, validation loss=1.0841
+2026-09-22 22:05:01 | Processing batch 0/606
+
+batch size 32
+###
+2026-09-22 22:06:37 | Training on mps, 303 batches/epoch, 5 epochs, learning rate 7.5e-06, weight decay 0.01, training precision FP32; validation precision FP32
+Best checkpoint: /Users/KurtMeehanPro/Documents/code/git/adventure-of-the-lying-detective/data/checkpoints/xlm-roberta-base/run-20260922-220637-hc21zu0v/best.pt
+Early stopping: patience=2, min_delta=0.0
+2026-09-22 22:07:46 | Epoch 1/5: training loss = 1.1024, validation loss = 1.0949, validation accuracy = 34.46%
+Saved best checkpoint: epoch 1, validation loss=1.0949
+2026-09-22 22:08:55 | Epoch 2/5: training loss = 0.9743, validation loss = 0.7946, validation accuracy = 65.99%
+Saved best checkpoint: epoch 2, validation loss=0.7946
+2026-09-22 22:08:56 | Processing batch 0/303
+
+batch size 64
+###
+2026-09-22 22:11:19 | Training on mps, 152 batches/epoch, 5 epochs, learning rate 7.5e-06, weight decay 0.01, training precision FP32; validation precision FP32
+Best checkpoint: /Users/KurtMeehanPro/Documents/code/git/adventure-of-the-lying-detective/data/checkpoints/xlm-roberta-base/run-20260922-221118-ytvsvgza/best.pt
+Early stopping: patience=2, min_delta=0.0
+2026-09-22 22:12:25 | Epoch 1/5: training loss = 1.1027, validation loss = 1.0974, validation accuracy = 36.03%
+Saved best checkpoint: epoch 1, validation loss=1.0974
+2026-09-22 22:13:30 | Epoch 2/5: training loss = 1.0841, validation loss = 1.0238, validation accuracy = 51.40%
+Saved best checkpoint: epoch 2, validation loss=1.0238
+2026-09-22 22:14:36 | Epoch 3/5: training loss = 0.9239, validation loss = 0.7843, validation accuracy = 66.03%
+Saved best checkpoint: epoch 3, validation loss=0.7843
+2026-09-22 22:15:42 | Epoch 4/5: training loss = 0.7752, validation loss = 0.7435, validation accuracy = 69.46%
+Saved best checkpoint: epoch 4, validation loss=0.7435
+2026-09-22 22:16:48 | Epoch 5/5: training loss = 0.6729, validation loss = 0.7190, validation accuracy = 70.98%
+Saved best checkpoint: epoch 5, validation loss=0.7190
+Training complete. Restored best epoch 5: validation loss=0.7190, validation accuracy=70.98%; /Users/KurtMeehanPro/Documents/code/git/adventure-of-the-lying-detective/data/checkpoints/xlm-roberta-base/run-20260922-221118-ytvsvgza/best.pt
+
+batch size 128
+###
+2026-09-22 22:19:16 | Training on mps, 76 batches/epoch, 5 epochs, learning rate 7.5e-06, weight decay 0.01, training precision FP32; validation precision FP32
+Best checkpoint: /Users/KurtMeehanPro/Documents/code/git/adventure-of-the-lying-detective/data/checkpoints/xlm-roberta-base/run-20260922-221916-q0ln63kd/best.pt
+Early stopping: patience=2, min_delta=0.0
+2026-09-22 22:20:25 | Epoch 1/5: training loss = 1.1033, validation loss = 1.0980, validation accuracy = 34.46%
+Saved best checkpoint: epoch 1, validation loss=1.0980
+2026-09-22 22:21:38 | Epoch 2/5: training loss = 1.0906, validation loss = 1.0714, validation accuracy = 44.39%
+Saved best checkpoint: epoch 2, validation loss=1.0714
+2026-09-22 22:22:51 | Epoch 3/5: training loss = 0.9731, validation loss = 0.8282, validation accuracy = 63.93%
+Saved best checkpoint: epoch 3, validation loss=0.8282
+2026-09-22 22:24:14 | Epoch 4/5: training loss = 0.8292, validation loss = 0.7523, validation accuracy = 68.30%
+Saved best checkpoint: epoch 4, validation loss=0.7523
+2026-09-22 22:25:31 | Epoch 5/5: training loss = 0.7282, validation loss = 0.7368, validation accuracy = 69.50%
+Saved best checkpoint: epoch 5, validation loss=0.7368
+Training complete. Restored best epoch 5: validation loss=0.7368, validation accuracy=69.50%; /Users/KurtMeehanPro/Documents/code/git/adventure-of-the-lying-detective/data/checkpoints/xlm-roberta-base/run-20260922-221916-q0ln63kd/best.pt
+
+batch size 32
+###
+2026-09-22 23:26:00 | Training on mps, 303 batches/epoch, 20 epochs, learning rate 7.5e-06, weight decay 0.01, training precision FP32; validation precision FP32
+Best checkpoint: /Users/KurtMeehanPro/Documents/code/git/adventure-of-the-lying-detective/data/checkpoints/xlm-roberta-base/run-20260922-232600-r2g7cj77/best.pt
+Early stopping: patience=2, min_delta=0.0
+2026-09-22 23:27:10 | Epoch 1/20: training loss = 1.1044, validation loss = 1.0986, validation accuracy = 34.46%
+Saved best checkpoint: epoch 1, validation loss=1.0986
+2026-09-22 23:28:18 | Epoch 2/20: training loss = 1.0612, validation loss = 0.9210, validation accuracy = 58.70%
+Saved best checkpoint: epoch 2, validation loss=0.9210
+2026-09-22 23:29:25 | Epoch 3/20: training loss = 0.8465, validation loss = 0.7355, validation accuracy = 68.63%
+Saved best checkpoint: epoch 3, validation loss=0.7355
+2026-09-22 23:30:34 | Epoch 4/20: training loss = 0.6958, validation loss = 0.7110, validation accuracy = 70.49%
+Saved best checkpoint: epoch 4, validation loss=0.7110
+2026-09-22 23:31:43 | Epoch 5/20: training loss = 0.5790, validation loss = 0.7243, validation accuracy = 71.76%
+No significant validation-loss improvement: 1 consecutive epoch(s)
+2026-09-22 23:32:51 | Epoch 6/20: training loss = 0.4852, validation loss = 0.7598, validation accuracy = 72.38%
+No significant validation-loss improvement: 2 consecutive epoch(s)
+Early stopping after epoch 6 (patience=2)
+Training complete. Restored best epoch 4: validation loss=0.7110, validation accuracy=70.49%; /Users/KurtMeehanPro/Documents/code/git/adventure-of-the-lying-detective/data/checkpoints/xlm-roberta-base/run-20260922-232600-r2g7cj77/best.pt
