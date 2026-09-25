@@ -46,7 +46,7 @@ python -m pip install -r requirements.txt
 
 ### Recommended only if you are a glutton for punishment: Intel Mac compatibility
 
-Use **Python 3.12** with
+Use **Python 3.12.3 or 3.12.10** (both were used in this project) with
 [requirements-macos-intel.txt](requirements-macos-intel.txt):
 
 ```bash

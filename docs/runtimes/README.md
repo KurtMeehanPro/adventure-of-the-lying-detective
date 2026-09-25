@@ -1,56 +1,80 @@
 # XLM-Roberta Base training runtime comparisons
 
+<br>
+
 ## Background
 
-While fine-tuning FacebookAI/xlm-roberta-base on the iMac with an Intel chipset using MPS, I encountered an out-of-memory error. This led to an [investigation into MPS memory usage](../investigations/mps-memory.md), which continued on the MacBook Air M5. The same MPS memory issue was found on Mabook Air with PyTorch 2.2.2. During the investigation, I also recorded training runtimes across different hardware and software configurations. The comparisons below document those results.
+This project required a multitude of different training runs on different hardwares and configurations. I became curious about the configurations and associated runtimes. The results are documented below.
+
+<br>
+
+## MPS Memory Issue
+
+While fine-tuning FacebookAI/xlm-roberta-base on the iMac with an Intel chipset using MPS, I encountered an out-of-memory error. This led to an [investigation into MPS memory usage](../investigations/mps-memory.md), which continued on the MacBook Air M5. The same MPS memory issue was found on Mabook Air with PyTorch 2.2.2. Fixed-length padding and upgrading to newer PyTorch, both, individually, resolved the memory issue on the Macbook Air.
+
+<br>
 
 ## Limitations
-The iMac with Intel is limited to PyTorch 2.2.2 when using official macOS x86_64 binaries, as [support ended with the 2.2 series](https://dev-discuss.pytorch.org/t/pytorch-macos-x86-builds-deprecation-starting-january-2024/1690).
+The iMac with Intel is limited to PyTorch 2.2.2 when using official macOS x86_64 binaries, as [support ended with the 2.2 series](https://dev-discuss.pytorch.org/t/pytorch-macos-x86-builds-deprecation-starting-january-2024/1690). It will not be tested whether fixed padding resolves the iMac's MPS memory issue. Even if it does fix the issue on iMac, as it did on the Macbook Air, newer official builds for PyTorch are unavailable for the iMac. Hence, the iMac can't get the same kind of speed improvements that are shown in the table below for Macbook Air using newer versions of PyTorch and dynamic padding.
 
-## Findings
-Fixed-length padding and upgrading to newer PyTorch, both, individually, resolved the memory issue on the Macbook Air. It's still untested whether fixed padding resolves the iMac's MPS memory issue. Even if it does fix the issue on iMac, as it did on the Macbook Air, newer official builds for PyTorch are unavailable for the iMac. Hence, we can't get the same kind of speed improvements that were shown in the table below for Macbook Air using newer versions of PyTorch and dynamic padding. The fastest measured configuration was the MacBook Air using newer PyTorch 2.14.0 with batch size 4, dynamic padding, and Python 3.14.7.
+<br>
 
 ## Runtimes
-| Configuration | Batch size | Measured interval | Examples | Seconds/example | Projected epoch time | Status |
-|---|---:|---|---:|---:|---:|---|
-| iMac MPS | — | — | — | — | — | Out of memory; no runtime data |
-| [iMac CPU](2026-09-11-imac-cpu-batch1.md) | 1 | Sept 11, 20:28:26–23:52:28 (12,242 s) | 9,600 | **1.2752** | 3h 26m 2s | Epoch completed; training loss 1.1096 |
-| MacBook Air MPS, original dynamic padding | 1 | — | — | — | — | Out of memory during batch 24; no runtime data |
-| [MacBook Air CPU](2026-09-13-mba-cpu-batch1.md) | 1 | Sept 13, 19:27:51–19:34:23 (392 s) | 1,000 | **0.392** | 1h 3m 20s | Partial run, stopped intentionally. |
-| [MacBook Air MPS, fixed padding 512](2026-09-14-mba-mps-padding512-batch1.md) | 1 | Sept 14, 15:48:50–15:51:03 (133 s) | 400 | **0.3325** | 53m 43s | Partial run, stopped intentionally. |
-| [MacBook Air MPS, fixed padding 512](2026-09-14-mba-mps-padding512-batch2.md) | 2 | Sept 14, 15:53:06–16:38:07 (2,701 s) | 9,600 | **0.2814** | 45m 27s | Epoch 1 completed; training loss 1.1077 |
-| [MacBook Air MPS, fixed padding 512](2026-09-14-mba-mps-padding512-batch4.md) | 4 | Sept 14, 16:45:37–16:52:03 (386 s) | 1,600 | **0.2413** | 38m 59s | Partial run, stopped intentionally. |
-| [MacBook Air MPS, fixed padding 512](2026-09-14-mba-mps-padding512-batch8.md) | 8 | Sept 14, 16:55:38–17:01:59 (381 s) | 800 | **0.4763** | 1h 16m 57s | Partial run, stopped intentionally. |
-| MacBook Air MPS, fixed padding 512 | 16 | 34m 7s elapsed | Unknown | **>1.279 (lower bound)** | >3h 26m 42s (lower bound) | Run incomplete; stopped before batch 100 / 1,600-example milestone |
-| [MacBook Air MPS, fixed padding 512, PyTorch 2.14.0](2026-09-14-mba-mps-padding512-batch4-torch2.14.0.md) | 4 | Sept 14, 18:17:15–18:21:57 (282 s) | 1,600 | **0.17625** | 28m 29s | Partial run, stopped intentionally. |
-| [MacBook Air MPS, dynamic padding, PyTorch 2.14.0](2026-09-14-mba-mps-dynamic-padding-batch4-torch2.14.0.md) | 4 | Sept 14, 18:26:37–18:29:03 (146 s) | 2,400 | **0.0608333** | 9m 50s | Partial run, stopped intentionally. |
-| [MacBook Air MPS, dynamic padding, PyTorch 2.14.0, Python 3.14.7 modern](2026-09-14-mba-mps-dynamic-padding-batch4-torch2.14.0-py3.14-modern.md) | 4 | Sept 14, 18:50:27–19:00:01 (574 s) | 9,600 | **0.0597917** | 9m 40s | Epoch completed; training loss 1.1052; final 94 examples untimed |
+| Device | [Configuration](#configuration) | Batch size | Epochs completed | Examples completed | Examples in calculation | Measured time (s) | Examples/second | Epoch time (9,694 examples) | [Out of memory](../investigations/mps-memory.md) | Runtime log |
+|---|---|---:|---:|---:|---:|---:|---:|---:|---|---|
+| iMac MPS | 1 | — | 0 | — | — | — | — | — | True | n/a |
+| iMac CPU | 1 | 1 | 1 | 9,694 | 9,600 | 12,242 | **0.7842** | ~3h 26m 2s | False | [log](2026-09-11-imac-cpu-batch1.md) |
+| MacBook Air MPS | 2 | 1 | 0 | — | — | — | — | — | True | n/a |
+| MacBook Air CPU | 2 | 1 | 0 | 1,000 | 1,000 | 392 | **2.5510** | ~1h 3m 20s | False | [log](2026-09-13-mba-cpu-batch1.md) |
+| MacBook Air MPS | 3 | 1 | 0 | 400 | 400 | 133 | **3.0075** | ~53m 43s | False | [log](2026-09-14-mba-mps-padding512-batch1.md) |
+| MacBook Air MPS | 3 | 2 | 1 | 9,694 | 9,600 | 2,701 | **3.5542** | ~45m 27s | False | [log](2026-09-14-mba-mps-padding512-batch2.md) |
+| MacBook Air MPS | 3 | 4 | 0 | 1,600 | 1,600 | 386 | **4.1451** | ~38m 59s | False | [log](2026-09-14-mba-mps-padding512-batch4.md) |
+| MacBook Air MPS | 3 | 8 | 0 | 800 | 800 | 381 | **2.0997** | ~1h 16m 57s | False | [log](2026-09-14-mba-mps-padding512-batch8.md) |
+| MacBook Air MPS | 3 | 16 | 0 | Unknown | 1,600 | 2,047 | **<0.7816 (upper bound)** | >3h 26m 42s (lower bound) | False | n/a* (see notes) |
+| MacBook Air MPS | 4 | 4 | 0 | 1,600 | 1,600 | 282 | **5.6738** | ~28m 29s | False | [log](2026-09-14-mba-mps-padding512-batch4-torch2.14.0.md) |
+| MacBook Air MPS | 5 | 4 | 0 | 2,400 | 2,400 | 146 | **16.4384** | ~9m 50s | False | [log](2026-09-14-mba-mps-dynamic-padding-batch4-torch2.14.0.md) |
+| MacBook Air MPS | 6 | 4 | 1 | 9,694 | 9,600 | 574 | **16.7247** | ~9m 40s | False | [log](2026-09-14-mba-mps-dynamic-padding-batch4-torch2.14.0-py3.14-modern.md) |
+| Mac Studio MPS | 7 | 8 | 1 | 9,694 | 9,694 | 120 | **80.7833** | 2m 0s | False | [log](2026-09-22-mac-studio-mps-dynamic-padding-batch8-modern.md) |
+| Mac Studio MPS | 7 | 16 | 1 | 9,694 | 9,694 | 85 | **114.0471** | 1m 25s | False | [log](2026-09-22-mac-studio-mps-dynamic-padding-batch16-modern.md) |
+| Mac Studio MPS | 7 | 32 | 2 | 19,388 | 19,388 | 138 | **140.4928** | 1m 9s | False | [log](2026-09-22-mac-studio-mps-dynamic-padding-batch32-modern.md) |
+| Mac Studio MPS | 7 | 32 | 6 | 58,164 | 58,164 | 411 | **141.5182** | 1m 8.5s | False | [log](2026-09-22-mac-studio-mps-dynamic-padding-batch32-run2-modern.md) |
+| Mac Studio MPS | 7 | 64 | 5 | 48,470 | 48,470 | 329 | **147.3252** | 1m 5.8s | False | [log](2026-09-22-mac-studio-mps-dynamic-padding-batch64-modern.md) |
+| Mac Studio MPS | 7 | 128 | 5 | 48,470 | 48,470 | 375 | **129.2533** | 1m 15s | False | [log](2026-09-22-mac-studio-mps-dynamic-padding-batch128-modern.md) |
 
-## Dates
-Dates are in 2026.
+<br>
 
-## Recorded Time and estimations
-- progress was printed every 100 batches. It does not include a timestamp for the final completion of the training epoch
-- In cases where the epoch completed, the remaining examples were not used in the averages.
-- time estimation excludes validation and other overhead
+### Notes:
 
-## Projections
-- use 9,694 training examples and full-precision interval averages, rounded to the nearest second.
-- assume the measured average pace holds.
-- do not prove the training epoch would definitely complete (though it seems perfectly reasonable to assume it would)
+In the Epoch time column:
+- `~` marks an estimated value.
+- Inequality signs mark upper and lower bounds.
+- Unless otherwise marked, epoch time is either a directly measured single-epoch duration or the average of multiple measured epoch durations.
 
-## Batch size 16
-Batch size 16 run did not complete. I did not let it get to batch 100 as it was taking so long. It uses a lower bound of 2,047 / 1,600 seconds per example.
+In the Runtime Log column:
+- n/a marked for [Out of memory](../investigations/mps-memory.md) because no log generated before hitting OOM error
+- n/a* marked for batch size 16 run - the run was manually aborted due to how much time it was taking
 
-## Settings
-- Fixed-padding MPS: `padding='max_length'`
-- tokenizer default 512
-- PyTorch 2.2.2 unless marked otherwise
-- FP32
-- AdamW
+<br>
 
 ## Hardware
 | Machine | Processor | Graphics | Memory |
 |---|---|---|---|
-| iMac | 3.8 GHz 8-core Intel Core i7 | AMD Radeon Pro 5500 XT 8 GB | 16 GB 2667 MHz DDR4 |
-| MacBook Air | Apple M5 | — | 16 GB unified memory |
+| iMac | Intel 3.8 GHz 8-core i7 | AMD Radeon Pro 5500 XT 8 GB | 16 GB 2667 MHz DDR4 |
+| MacBook Air | Apple M5 10 Core CPU | 10 Core GPU | 16 GB unified memory |
+| Mac Studio | Apple M5 Max 18 Core CPU | 40 Core GPU | 64 GB unified memory |
+
+<br>
+
+## Configuration
+
+| Configuration number | Python | PyTorch | Packages | Padding | Warmup, validation, early stopping, and checkpointing |
+|---|---|---|---|---|---|
+| 1 | 3.12.3 | 2.2.2 | [requirements-macos-intel.txt](../../requirements-macos-intel.txt) | dynamic padding | No |
+| 2 | 3.12.10 | 2.2.2 | [requirements-macos-intel.txt](../../requirements-macos-intel.txt) | dynamic padding | No |
+| 3 | 3.12.10 | 2.2.2 | [requirements-macos-intel.txt](../../requirements-macos-intel.txt) | fixed padding 512 (`padding='max_length'`) | No |
+| 4 | 3.12.10 | 2.14.0 | [requirements-macos-intel.txt](../../requirements-macos-intel.txt) | fixed padding 512 (`padding='max_length'`) | No |
+| 5 | 3.12.10 | 2.14.0 | [requirements-macos-intel.txt](../../requirements-macos-intel.txt) | dynamic padding | No |
+| 6 | 3.14.7 | 2.14.0 | [requirements.txt](../../requirements.txt) | dynamic padding | No |
+| 7 | 3.14.7 | 2.14.0 | [requirements.txt](../../requirements.txt) | dynamic padding | Yes |
+
+### Note: If the PyTorch version listed in this table differs from the version in the linked packages file, the version listed in this table was used for the run.

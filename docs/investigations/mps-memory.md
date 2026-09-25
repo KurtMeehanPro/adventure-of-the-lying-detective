@@ -1,4 +1,4 @@
-# GPU memory investigation
+# MPS Memory Investigation
 
 ## 13 September 2026 — Original failure
 
@@ -14,4 +14,4 @@ On the MacBook Air, fixed padding to `max_length=512` with PyTorch 2.2.2 enabled
 
 Upgrading directly to PyTorch 2.14.0 allowed dynamic padding at batch size 4. A full epoch then completed in the modern environment with Python 3.14.7 and PyTorch 2.14.0.
 
-The fixed-padding workaround has not yet been tested on the Intel iMac. See the [runtime performance documentation](../runtimes/README.md) for timings, environments and training logs.
+The fixed-padding workaround will not be tested on the Intel iMac. See the [runtime performance documentation](../runtimes/README.md) for timings, environments and training logs.
