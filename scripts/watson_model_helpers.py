@@ -24,9 +24,11 @@ def split_training_data(training_data):
     return training_data.iloc[train_index], training_data.iloc[validation_index]
 
 
-def load_model_and_tokenizer():
-    """Load XLM-RoBERTa base with a three-label head and its matching tokenizer."""
-    model_name = "FacebookAI/xlm-roberta-base"
+def load_model_and_tokenizer(model_name=None):
+    """Load a pretrained model with a three-label head and its matching tokenizer."""
+    if model_name is None:
+        raise ValueError("Model name is required when calling load_model_and_tokenizer.")
+
     try:
         tokenizer = AutoTokenizer.from_pretrained(
             model_name, clean_up_tokenization_spaces=False)
