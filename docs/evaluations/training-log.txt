@@ -276,3 +276,32 @@ No significant validation-loss improvement: 1 consecutive epoch(s)
 No significant validation-loss improvement: 2 consecutive epoch(s)
 Early stopping after epoch 7 (patience=2)
 Training complete. Restored best epoch 5: validation loss=0.5174, validation accuracy=80.87%; /Users/KurtMeehanPro/Documents/code/git/adventure-of-the-lying-detective/data/checkpoints/xlm-roberta-large/run-20260928-171218-ri_fmq3z/best.pt
+
+
+Kaggle Draft Session Training Log
+##
+2026-09-29 16:56:58 | Starting epoch 1/5
+2026-09-29 17:01:11 | Processing batch 250/758
+2026-09-29 17:05:30 | Processing batch 500/758
+2026-09-29 17:09:48 | Processing batch 750/758
+2026-09-29 17:09:58 | Epoch 1/5 - training loss: 1.0673
+2026-09-29 17:09:58 | Starting epoch 2/5
+2026-09-29 17:14:15 | Processing batch 250/758
+2026-09-29 17:18:35 | Processing batch 500/758
+2026-09-29 17:22:52 | Processing batch 750/758
+2026-09-29 17:23:01 | Epoch 2/5 - training loss: 0.6129
+2026-09-29 17:23:01 | Starting epoch 3/5
+2026-09-29 17:27:17 | Processing batch 250/758
+2026-09-29 17:31:36 | Processing batch 500/758
+2026-09-29 17:35:54 | Processing batch 750/758
+2026-09-29 17:36:03 | Epoch 3/5 - training loss: 0.4091
+2026-09-29 17:36:03 | Starting epoch 4/5
+2026-09-29 17:40:19 | Processing batch 250/758
+2026-09-29 17:44:40 | Processing batch 500/758
+2026-09-29 17:48:58 | Processing batch 750/758
+2026-09-29 17:49:07 | Epoch 4/5 - training loss: 0.3009
+2026-09-29 17:49:07 | Starting epoch 5/5
+2026-09-29 17:53:26 | Processing batch 250/758
+2026-09-29 17:57:44 | Processing batch 500/758
+2026-09-29 18:02:02 | Processing batch 750/758
+2026-09-29 18:02:11 | Epoch 5/5 - training loss: 0.2081
