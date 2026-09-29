@@ -39,7 +39,7 @@ See the [model evaluation report](docs/evaluations/README.md) for per-class metr
 
 **Accuracy: 80.5%**
 
-**Placed 18th on the Rolling Leaderboard as of September 29th, 2026**
+**Placed 18th on Kaggle's rolling leaderboard for the competition as of September 29th, 2026**
 
 Kaggle reports only overall accuracy and does not provide the test labels needed to calculate additional evaluation metrics.
 
